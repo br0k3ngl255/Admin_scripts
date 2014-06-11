@@ -1,0 +1,33 @@
+#!/usb/bin/env bash 
+#
+#date
+#created by br0k3ngl255
+#######################################################################################################################
+#purpose:
+# I am just being lazy to install this manully again and again.
+#So here is a solution for most kinds of distributions to setup LAMP-server
+#for Nginx lovers- once i'll learn how to operate it - i'll include it as well.
+#######################################################################################################################
+
+
+#VARs---------------------------------------------------------------------------------------------
+arch=''
+distroVar=''
+
+
+#FUNCS++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+fucntion arch(){
+if [ `uname -m`== "x86_64" ];then
+	echo -e "64 but"; arch=x86_64;
+elif [ `uname -m`== "i686" ] || [ `uname -m`== "i586" ] || [ `uname -m`== "i486" ] || [ `uname -m`== "i386" ];then
+	echo -e "32 bits"; arch=x86;
+fi
+}
+function chackDistro(){
+	
+
+}
+
+
+
+#ACTIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
