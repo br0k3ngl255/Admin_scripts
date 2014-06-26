@@ -23,7 +23,7 @@ set -x
 
 ##Vars~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
 hmaConfig=''
-noIPconfig=' -I tun0  -u datasecnet@gmail.com -p don22don22' #you need to put your hma usr/passwd here
+noIPconfig=' -I tun0  -u XXXXXXXXXXX -p $$$$$$$$$$$$$$' #you need to put your hma usr/passwd here
 ##Funcs++++++++++++++++++++++++++++++++++++++
 
 
