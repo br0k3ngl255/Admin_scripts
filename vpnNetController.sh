@@ -75,34 +75,17 @@ openvpnCmd=`ps aux |grep -v grep | grep openvpn > /dev/null ; echo $? `
 ##Actions-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
 if [ $netCMD != 0 ];then
-<<<<<<< HEAD
-checkNoIP
-        checkVPN
-                sleep 20
-		runCheck
-        elif [ $EUID != 0 ];then
-                echo " Be root or Get Chroot "
-                exit
-                else
-			runCheck
-                        loadHMA
-                        while [ "$intCMD" -ge 0 ]  # this is loop2
-                                do
-                                        sleep 1
-                                        if [ $intCMD=="0" ];then
-                                                break
-                                        fi
-                                   done
-                                loadNoIP
-=======
+
 checkNoIP 
 	checkVPN
+		runCheck
 		sleep 20
 	elif [ $EUID != 0 ];then
 		echo " Be root or Get Chroot "
 		exit
-		else
-			loadHMA
+		else	
+			runCheck
+			           loadHMA
 			while [ "$intCMD" -ge 0 ]  # this is loop
    				do
 					sleep 5
@@ -112,5 +95,4 @@ checkNoIP
 					fi			
 				   done
 			loadNoIP
->>>>>>> 9fd1d3cb7f456e33c43dd442417e4fe306915d52
 fi
