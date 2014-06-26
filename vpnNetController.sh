@@ -89,7 +89,7 @@ checkNoIP
 				openvpnLoad=`ps aux|grep -v grep| grep openvpn > /dev/null;echo $?`
 			while [ $intCMD == "0" ] && [ $openvpnLoad == "0" ] # this is loop
    				do
-while (ps -A | grep -v grep | grep mySimulator > /dev/null); do sleep 1; done
+#while (ps -A | grep -v grep | grep mySimulator > /dev/null); do sleep 1; done
 					sleep 5
 					if [ $intCMD=="0" ];then
 						sleep 5
