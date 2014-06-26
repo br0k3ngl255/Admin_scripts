@@ -54,6 +54,17 @@ function loadNoIP(){
 function loadHMA(){ #this still needs debugging - because redirecting usr/paswd into the script doesn't works' yet ;usually you run the script manually and it will set username password and will fetch afterwords else this script won't work properly'
 /usr/local/bin/hma-vpn.sh -p tcp Texas  > /dev/null&
 }
+
+function runCheck(){
+noipCmd=`ps aux |grep -v grep| grep noip2 > /dev/null;echo $? `
+openvpnCmd=`ps aux |grep -v grep | grep openvpn > /dev/null ; echo $? `
+	if [ $noipCmd== "0" ] || [ $openvpnCmd == "0" ];then
+		echo "Already conected to reconnect kill the instance "
+		exit
+	fi
+
+}
+
 ##Actions-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
 netCMD=`ping -c 1 8.8.8.8 > /dev/null |echo $?`
@@ -62,10 +73,12 @@ if [ $netCMD != 0 ];then
 checkNoIP
         checkVPN
                 sleep 20
+		runCheck
         elif [ $EUID != 0 ];then
                 echo " Be root or Get Chroot "
                 exit
                 else
+			runCheck
                         loadHMA
                         while [ "$intCMD" -ge 0 ]  # this is loop2
                                 do
