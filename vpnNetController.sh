@@ -25,8 +25,8 @@ set -x
 hmaConfig=''
 noIPconfig=' -I tun0  -u datasecnet@gmail.com -p don22don22' #you need to put your hma usr/passwd here
 ##Funcs++++++++++++++++++++++++++++++++++++++
-intCMD=`ifconfig |cut -d " " -f  1|grep tun0 > /dev/null ;echo $?`
-netCMD=`ping -c 1 8.8.8.8 > /dev/null |echo $?`
+
+
 
 function checkNoIP(){
  if [ -f /usr/loca/bin/noip2 ];then
@@ -69,11 +69,10 @@ openvpnCmd=`ps aux |grep -v grep | grep openvpn > /dev/null ; echo $? `
 		echo "Already conected to reconnect kill the instance "
 		exit
 	fi
-
 }
 
 ##Actions-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
-
+netCMD=`ping -c 1 8.8.8.8 > /dev/null |echo $?`
 if [ $netCMD != 0 ];then
 
 checkNoIP 
@@ -86,8 +85,11 @@ checkNoIP
 		else	
 			runCheck
 			           loadHMA
-			while [ "$intCMD" -ge 0 ]  # this is loop
+				intCMD=`ifconfig |cut -d " " -f  1|grep tun0 > /dev/null ;echo $?`
+				openvpnLoad=`ps aux|grep -v grep| grep openvpn > /dev/null;echo $?`
+			while [ $intCMD == "0" ] && [ $openvpnLoad == "0" ] # this is loop
    				do
+while (ps -A | grep -v grep | grep mySimulator > /dev/null); do sleep 1; done
 					sleep 5
 					if [ $intCMD=="0" ];then
 						sleep 5
